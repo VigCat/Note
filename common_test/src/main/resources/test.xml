@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<!-- 模板 -->
+	<UrlInfo>
+		<desc>真烟案件导入 (这里是模块的描述信息可以随便填)</desc>
+		<url>/is/Zytmxx/zytmxxFile.do(这里是请求的地址)</url>
+		<translator>down(是否降级：down 降级 ，up 升级，none 不做处理)</translator>
+	</UrlInfo>
+	<!-- 正式配置开始 -->
+	<UrlInfo>
+		<desc>真烟案件导入</desc>
+		<url>/is/Zytmxx/zytmxxFile.do</url>
+		<translator>down</translator>
+	</UrlInfo>
+</root>  

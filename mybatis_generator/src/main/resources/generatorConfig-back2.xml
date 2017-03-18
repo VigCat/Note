@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+<!-- 数据库驱动jar -->
+<classPathEntry location="E:/workspace-luna/shoms/WebRoot/WEB-INF/lib/ojdbc6.jar"/>
+  <context id="context1" >
+  <!-- 对注释的操作 -->
+  	<commentGenerator>
+        <property name="suppressDate" value="true"/>
+        <property name="suppressAllComments" value="true"/>
+    </commentGenerator>
+  <!-- 数据库连接 -->
+    <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@192.168.1.252:1521/shoms" userId="shoms" password="admin" />
+<!--     <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@192.168.1.252:1521/shoms" userId="shoms" password="admin" /> -->
+  <!-- 生成实体类 -->
+    <javaModelGenerator targetPackage="com.shoms.entity.table" targetProject="shoms" />
+  <!-- 生成映射文件 --> 
+    <sqlMapGenerator targetPackage="sql_xml" targetProject="shoms" />
+  <!-- 生成dao -->
+    <javaClientGenerator targetPackage="com.shoms.dao" targetProject="shoms" type="XMLMAPPER" />
+    
+    <table tableName="T_RUN_TRYOUTTASK" domainObjectName="TryOutTaskPlan"
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+    </table>
+    
+  </context>
+</generatorConfiguration>

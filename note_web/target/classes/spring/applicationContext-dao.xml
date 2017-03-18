@@ -1,0 +1,52 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+
+	<!-- 加载db.properties文件中的内容，db.properties文件中key命名要有一定的特殊规则 -->
+	<context:property-placeholder location="classpath:db.properties" />
+
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxActive" value="30" />
+		<property name="maxIdle" value="5" />
+	</bean>
+
+	<!-- sqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 数据连接池 ：这里的ref一定需要 不然就出错了 我也不知道为什么 -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- 加载mybatis全局配置文件 ： 需要注意文件路径 -->
+		<!-- <property name="configLocation" value="classpath:mybatis/sqlMapConfig.xml" 
+			/> -->
+		<!-- 这里配置了mapper.xml的路径（跟mapper不在同文件夹下面就不用再去加载sqlMapConfig.xml里面的东西了，只是分分类就会显得有些不伦不类） -->
+		<!-- 如果整合了很多的mybatis项目。mapper文件在不同的包之下，那就需要扫描全部路径下的*Mapper.xml文件 -->
+		<property name="mapperLocations" value="classpath*:sqlMapper/*Mapper.xml" />
+
+	</bean>
+
+	<!--mapper的扫描器 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 扫描包路径：如果要扫描多个包，则用半角逗号隔开，这里的扫描的路径 com.civet.*.dao,  ,com.civet.*(..).dao,com.civet.*(..).dao.custom-->
+		<property name="basePackage" value="com.civet.**.dao,com.civet.**.dao.custom"/>
+		<!-- 这里不用 ref来直接指定sqlSessionFactory是因为会导致前面加载db.properties文件失效 -->
+		<property name="SqlSessionFactoryBeanName" value="sqlSessionFactory" />
+
+	</bean>
+
+</beans>

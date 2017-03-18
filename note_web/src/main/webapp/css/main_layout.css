@@ -1,0 +1,42 @@
+body {
+	/*这个是为了去除下一部分布局区域的给定高度100%的时候出现的垂直滚动条*/
+	/*overflow-y: hidden;*/
+	padding: 0;
+	margin: 0;
+}
+
+.headBar {
+	position: fixed;
+	line-height: 50px;
+	width: 100%;
+	height: 50px;
+	min-width: 500px;
+	border-radius: 3px 3px;
+	/*box-shadow:[投影方式] X轴偏移量 Y轴偏移量阴影模糊半径 阴影扩展半径 阴影颜色*/
+	box-shadow: 0 0 5px;
+}
+
+.container {
+	position: fixed;
+	top: 52px;
+	bottom: 0;
+	width: 100%;
+}
+
+.container-menu {
+	float: left;
+	background-color: aquamarine;
+	width: 210px;
+	height: 100%;
+}
+
+.container-content {
+	height: 100%;
+}
+
+.footer {
+	height: 250px;
+	line-height:250px;
+	text-align: center;
+	padding-bottom:50px;
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+	<!-- <properties resource="db.properties" /> -->
+
+	<!-- 数据库驱动jar -->
+	<classPathEntry
+		location="E:\Maven\.m2\repository\mysql\mysql-connector-java\5.0.5\mysql-connector-java-5.0.5.jar" />
+	<!--配置文件 -->
+	<!-- jdbc.driver=com.mysql.jdbc.Driver jdbc.url=jdbc:mysql://localhost:3306/note 
+		jdbc.username=root jdbc.password=admin -->
+	<context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="false" />
+		</commentGenerator>
+
+		<!--数据库连接 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/note" userId="root"
+			password="admin">
+		</jdbcConnection>
+
+		<!-- 指定生成pojo的包和此包在项目中的地址； -->
+		<javaModelGenerator targetPackage="com.civet.note.entity"
+			targetProject="note_web" />
+
+		<!-- 指定生成pojo的映射xml文件的所在包和此包在项目中的地址 -->
+		<sqlMapGenerator targetPackage="sqlMapper"
+			targetProject="note_web" />
+
+		<!-- 指定生成访问映射xml文件的接口所在包和此包在项目中的地址； -->
+		<!-- <javaClientGenerator type="XMLMAPPER" targetPackage="com.civet.note.dao" 
+			targetProject="note_web"> </javaClientGenerator> -->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.civet.note.dao"
+			targetProject="note_web">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+
+		<!-- 配置表名跟pojo名 该table节点可以多个 -->
+		<table tableName="%" 
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="false" />
+			<!-- <columnOverride column="create_time" property="createTime" /> <columnOverride 
+				column="float_test" property="floatTest" /> <columnOverride column="double_test" 
+				property="doubleTest" /> <columnOverride column="text_test" property="textTest" 
+				/> -->
+		</table>
+	</context>
+</generatorConfiguration>

@@ -1,0 +1,212 @@
+/*顶部的布局*/
+
+.headBar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.headBar-content {
+	display: inline;
+	height: 30px;
+	width: 100%;
+	line-height: 30px;
+}
+
+.headBar-logo {
+	float: left;
+	font-size: 18px;
+	color: lightseagreen;
+}
+
+.headBar-tool {
+	float: right;
+}
+
+.headBar-info {
+	float: right;
+	color: white;
+}
+
+
+/*左边的布局*/
+
+.subnail {
+	width: 40px;
+}
+
+.menuBar {
+	height: 40px;
+	box-shadow: 0px 1px 3px #000;
+	background-color: #345;
+	line-height: 40px;
+	text-align: right;
+	padding-right: 10px;
+	color: white;
+}
+
+.menuItems {
+	margin-top: 5px;
+	padding: 0px;
+}
+
+.menuItem {
+	line-height: 35px;
+	/*width: 92%;   // 哈哈  这个不要就好了*/
+	list-style: none;
+	padding-left: 10px;
+	color: #fff;
+}
+
+.menuItem>div {
+	display: inline-block;
+}
+
+.menuItem img {
+	vertical-align: middle;
+}
+
+..m-item-icon {
+	width: 40px;
+}
+
+.m-item-desc {
+	/*这里的width是因为上面设置了display为inlineblock，如果这里不设置则就不起作用了*/
+	width: 80%;
+	float: right;
+	text-overflow: ellipsis;
+	/*text-ovetflow 必须配合这个才能起作用*/
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.menuItem:hover {
+	background-color: #0088CC;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 10px;
+	border-radius: 2px;
+	transition: 0.2s;
+}
+
+.menuItemSelected {
+	background-color: #0088CC;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 10px;
+	/*box-shadow:[投影方式] X轴偏移量 Y轴偏移量阴影模糊半径 阴影扩展半径 阴影颜色*/
+	box-shadow: 0px 1px 3px #000;
+	border-radius: 2px;
+}
+
+.fileList {
+	width: 150px;
+	height: 100%;
+	border: 2px solid #aaa;
+	border-radius: 0 3px 3px 0;
+}
+
+.fileList-headBar {
+	height: 38px;
+	box-shadow: 0px 1px 2px #ccc;
+	border-radius: 0 3px 0 0;
+}
+
+/*右边内容区域的布局*/
+
+.content-article {
+	width: 100%;
+	/*background-color: #AAAAAA;*/
+}
+
+.article-title {
+	line-height: 45px;
+	height: 45px;
+}
+
+.article-title-input {
+	float: left;
+	width: 75%;
+}
+
+.article-title-input>input {
+	width: 100%;
+	border: none;
+	font-size: 22px;
+	text-align: center;
+	height: 43px;
+}
+
+.article-title-tool {
+	float: right;
+	text-align: right;
+	width: 25%;
+}
+
+.button>img {
+	vertical-align: middle;
+}
+
+
+/*文本内容*/
+
+.article-content {
+	padding: 0 5px;
+}
+
+.article-content-innerhtml {
+	height: auto;
+	border-radius: 3px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	/*断词*/
+	word-wrap: break-word;
+	/*断句*/
+	word-break: break-all;
+	padding-bottom: 50px;
+}
+
+
+/* 设置滚动条的样式 
+::-webkit-scrollbar        滚动条整体部分，其中的属性有width,height,background,border（就和一个块级元素一样）等。
+::-webkit-scrollbar-button      滚动条两端的按钮。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。
+::-webkit-scrollbar-track         外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。
+::-webkit-scrollbar-track-piece        内层轨道，滚动条中间部分（除去）。
+::-webkit-scrollbar-thumb               滚动条里面可以拖动的那部分
+::-webkit-scrollbar-corner               边角
+::-webkit-resizer                       定义右下角拖动块的样式
+ * */
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+
+/*上下的按钮*/
+
+::-webkit-scrollbar-button {
+	background-color: #234;
+	height: 15px;
+	border-radius: 3px;
+}
+
+
+/* 滚动槽 */
+
+::-webkit-scrollbar-track {
+	/*width: 44px;*/
+	background-color: #eee;
+}
+
+
+/* 滚动条滑块 按下的时候触发 */
+
+::-webkit-scrollbar-thumb {
+	border-radius: 13px;
+	background-color: #456;
+	width: 55px;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+	background: #abc;
+}
