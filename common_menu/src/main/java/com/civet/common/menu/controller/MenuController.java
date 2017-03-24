@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.civet.common.menu.entity.Menu;
+import com.civet.common.menu.entity.TMenu;
 import com.civet.common.menu.service.MenuService;
 
 /** 
@@ -25,9 +25,12 @@ public class MenuController {
 	private MenuService service;
 	
 	@RequestMapping("/selectAll")
-	public @ResponseBody List<Menu> selectAll(Model model){
-//		model.addAttribute("test", service.selectAll());
+	public @ResponseBody List<TMenu> selectAll(Model model){
 		return service.selectAll();
 	}
 	
+	@RequestMapping("/selectByParentId")
+	public @ResponseBody List<TMenu> selectByParentId(String id){
+		return service.selectByParentId(id);
+	}  
 }

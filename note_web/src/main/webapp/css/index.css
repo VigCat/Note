@@ -48,7 +48,7 @@
 	/*box-shadow: 0px 1px 12px #000;*/
 }
 
-.menuItems>ul {
+.menuItems>.ulcontainer {
 	margin-top: 5px;
 	padding-left: 0px;
 	min-height: 70%;
@@ -57,6 +57,19 @@
 	overflow-y: auto;
 	box-shadow: 0px 1px 1px #888;
 	border-bottom: 1px solid #888;
+}
+
+.menuItems>.ulcontainer ul{
+	margin-top: 5px;
+	padding-left: 10px; 
+	width:100%;
+	box-shadow: 0px 1px 1px #888;
+	border-bottom: 1px solid #888;
+}
+
+.submenu{
+	width:100%;
+	padding-left:0px;
 }
 
 .menuItem {
@@ -69,6 +82,9 @@
 
 .menuItem>div {
 	display: inline-block;
+}
+.menuItem>.hide {
+	display: none;
 }
 
 .menuItem img {
@@ -92,9 +108,9 @@
 
 .menuItem:hover {
 	background-color: #21b992;
-	height: 45px;
+	/*height: 45px;*/
 	line-height: 45px;
-	padding-left: 10px;
+	padding-left: 0px;
 	border-radius: 2px;
 	transition: 0.2s;
 	cursor: pointer;
@@ -103,9 +119,9 @@
 .menuItemSelected {
 	background-color: #21b982;
 	/*background-color: #0088CC;*/
-	height: 46px;
+	/*height: 46px;*/
 	line-height: 46px;
-	padding-left: 10px;
+	padding-left: 0px;
 	/*box-shadow:[投影方式] X轴偏移量 Y轴偏移量阴影模糊半径 阴影扩展半径 阴影颜色*/
 	box-shadow: 0px 1px 2px #000;
 	border-radius: 2px;

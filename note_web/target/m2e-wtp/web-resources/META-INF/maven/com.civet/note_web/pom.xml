@@ -18,7 +18,6 @@
 			<version>${project.version}</version> </dependency> <dependency> <groupId>com.civet</groupId> 
 			<artifactId>note_entity</artifactId> <version>${project.version}</version> 
 			</dependency> -->
-
 		<dependency>
 			<groupId>com.civet</groupId>
 			<artifactId>common_menu</artifactId>

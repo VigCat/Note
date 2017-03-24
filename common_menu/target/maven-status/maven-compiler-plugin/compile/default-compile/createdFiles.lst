@@ -1,7 +1,7 @@
 com\civet\common\menu\controller\MenuController.class
+com\civet\common\menu\entity\TMenu.class
 com\civet\common\menu\service\impl\MenuServiceImpl.class
-com\civet\common\menu\dao\custom\MenuMapperCustom.class
-com\civet\common\menu\entity\Menu.class
-com\civet\common\menu\entity\custom\MenuCustom.class
-com\civet\common\menu\dao\MenuMapper.class
+com\civet\common\menu\dao\custom\TMenuMapperCustom.class
+com\civet\common\menu\entity\custom\TMenuCustom.class
+com\civet\common\menu\dao\TMenuMapper.class
 com\civet\common\menu\service\MenuService.class

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.civet.note.entity.Note;
+import com.civet.note.entity.TNote;
 import com.civet.note.service.NoteService;
 
 /***
@@ -22,7 +22,7 @@ public class TestHandler {
 	private NoteService service;
 
 	@RequestMapping("/insert")
-	public String insertHandler(Model models, Note note) {
+	public String insertHandler(Model models, TNote note) {
 		// 调用service 做业务实现
 //		int count = service.insert(note);
 //		models.addAttribute("count", count);
@@ -54,7 +54,7 @@ public class TestHandler {
 	}
 
 	@RequestMapping("/update")
-	public String updateHandler(Model model, Note note) {
+	public String updateHandler(Model model, TNote note) {
 		// 调用service 做业务实现
 //		int count = service.updateByPrimaryKey(note);
 //		model.addAttribute("list", count);

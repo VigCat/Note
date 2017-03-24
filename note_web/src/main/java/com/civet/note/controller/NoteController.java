@@ -74,7 +74,7 @@ public class NoteController {
 		// String fileName = req.getServletContext().getRealPath("/") +
 		// "resource\\user\\" + DateUtil.getUserDate("yyyyMM") + "\\" +
 		// Util.getDateTimeString() + ".civet";
-		// 、&& !"null".equals(note.getId()) && null != note.getId()
+		// && !"null".equals(note.getId()) && null != note.getId()
 		if (!"".equals(note.getId())&&null!=note.getId()) {
 			//fileName = note.getUrl() + "_u";
 			note.setUrl(fileName);
@@ -82,7 +82,7 @@ public class NoteController {
 			service.updateByPrimaryKeySelective(note);// (note.getId(),note);
 		} else {
 			note.setUrl(fileName);
-			note.setCreatetime(DateUtil.getStringDate());
+			//note.setCreatetime(DateUtil.getStringDate());
 			note.setId(Util.getDateTimeString());
 			service.insert(note);
 		}

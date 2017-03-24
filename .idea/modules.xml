@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/common_authority/common_authority.iml" filepath="$PROJECT_DIR$/common_authority/common_authority.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common_file/common_file.iml" filepath="$PROJECT_DIR$/common_file/common_file.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common_filter/common_filter.iml" filepath="$PROJECT_DIR$/common_filter/common_filter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common_interceptor/common_interceptor.iml" filepath="$PROJECT_DIR$/common_interceptor/common_interceptor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common_menu/common_menu.iml" filepath="$PROJECT_DIR$/common_menu/common_menu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common_test/common_test.iml" filepath="$PROJECT_DIR$/common_test/common_test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common_uitl/common_uitl.iml" filepath="$PROJECT_DIR$/common_uitl/common_uitl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis_generator/mybatis_generator.iml" filepath="$PROJECT_DIR$/mybatis_generator/mybatis_generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/note_dao/note_dao.iml" filepath="$PROJECT_DIR$/note_dao/note_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/note_entity/note_entity.iml" filepath="$PROJECT_DIR$/note_entity/note_entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/note_service/note_service.iml" filepath="$PROJECT_DIR$/note_service/note_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/note_web/note_web.iml" filepath="$PROJECT_DIR$/note_web/note_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/root.iml" filepath="$PROJECT_DIR$/root.iml" />
+    </modules>
+  </component>
+</project>

@@ -2,9 +2,7 @@ package com.civet.note.entity.custom;
 
 import java.util.List;
 
-//import org.apache.catalina.User;
-
-import com.civet.note.entity.Note;
+import com.civet.note.entity.TNote;
 
 /**
  * 
@@ -13,22 +11,22 @@ import com.civet.note.entity.Note;
  *
  */
 public class NoteQueryCustom {
-	private Note note;
-	private List<Note> noteList;
+	private TNote TNote;
+	private List<TNote> noteList;
 
-	public Note getNote() {
-		return note;
+	public TNote getNote() {
+		return TNote;
 	}
 
-	public void setNote(Note note) {
-		this.note = note;
+	public void setNote(TNote TNote) {
+		this.TNote = TNote;
 	}
 
-	public List<Note> getNoteList() {
+	public List<TNote> getNoteList() {
 		return noteList;
 	}
 
-	public void setNoteList(List<Note> noteList) {
+	public void setNoteList(List<TNote> noteList) {
 		this.noteList = noteList;
 	}
 

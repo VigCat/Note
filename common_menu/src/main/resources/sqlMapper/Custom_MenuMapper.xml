@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.civet.common.menu.dao.custom.MenuMapperCustom" >
-  <resultMap id="BaseResultMap" type="com.civet.common.menu.entity.Menu" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="description" property="description" jdbcType="VARCHAR" />
-    <result column="groupid" property="groupid" jdbcType="INTEGER" />
-    <result column="isDefault" property="isdefault" jdbcType="INTEGER" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, description, groupid, isDefault
-  </sql>
-  
-  <select id="selectAll" resultMap="BaseResultMap" >
-  	select 
-    <include refid="Base_Column_List" />
-    from t_menu
-  </select>
+<mapper namespace="com.civet.common.menu.dao.custom.TMenuMapperCustom">
+	<resultMap id="BaseResultMap" type="com.civet.common.menu.entity.TMenu">
+		<id column="id" jdbcType="VARCHAR" property="id" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+		<result column="href" jdbcType="VARCHAR" property="href" />
+		<result column="img" jdbcType="VARCHAR" property="img" />
+		<result column="fkparentid" jdbcType="VARCHAR" property="fkParentid" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+		<result column="isdefault" jdbcType="TINYINT" property="isdefault" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, description, href, img, fkparentid, title, isdefault
+	</sql>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_menu
+	</select>
+	<select id="selectByParentId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_menu
+		where fkparentid=#{id}
+
+	</select>
 </mapper>

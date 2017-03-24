@@ -40,8 +40,7 @@
 				<img src="<%=basePath%>/img/icon/icon.png" alt="" style="vertical-align: middle;" class="" />
 			</div>
 			<div class="menuItems">
-				<ul class="">
-				</ul>
+				<div class="ulcontainer"></div>
 				<div class="menuToolsContainer">
 					<ul class="menuTools">
 						<li class="menuTool">
@@ -185,52 +184,55 @@
 		basePath : ''
 	};
 	$(function() {
-		init_loadData();
-
+		loadMenu($(".menuItems>.ulcontainer"), 0);
 		$(".add").click(function() {
 			console.log("add");
 			GLOBLE.currentData = {};
-			$(".article-title input[name=title]").attr("disabled", false);
+			$(".article-title input[name=title]").val("").attr("disabled", false);
 			$(".article-info .info-contianer").html("");
 			$(".article-content-innerhtml").html("").hide();
 			$(".btn-save").show();
 			$(".btn-alter").hide();
+			ue.setContent("");
 			ue.setShow();
 		});
 
 		$(".article-content-innerhtml").hide();
 
 		$(".btn-save").click(function() {
-			logAll(GLOBLE.currentData);
+			//logAll(GLOBLE.currentData);
+			//console.log(GLOBLE.menu.current.id);
+			//return;
 			$(".btn-alter,.btn-save,.article-content-innerhtml").toggle();
 			$(".article-title input[name=title]").attr("disabled", true);
 			$(".article-content-innerhtml").html(ue.getContent());
 			ue.setHide();
-			$.ajax({
-				type : "POST",
-				url : "/note_web/note/saveNote.action",
-				data : {
-					id : GLOBLE.currentData.id,
-					content : $(".article-content-innerhtml").html(),
-					title : $(".article-title input[name=title]").val(),
-					parentid : GLOBLE.menu.current.id,
-					createtime : GLOBLE.currentData.createtime,
-					url : GLOBLE.currentData.url
-				},
-				dataType : "json",
-				success : function(data) {
-					//alert(data[1].title + " : " + data[1].id);
-					//logAll(data);
-					GLOBLE.currentData = data;
-					//alert("data");
-					$(".menuItemSelected").click();
-				},
-				error : function() {
-					alert("保存失败");
-				}
+			var data = {
+				id : GLOBLE.currentData.id,
+				content : $(".article-content-innerhtml").html(),
+				title : $(".article-title input[name=title]").val(),
+				fkparentid : GLOBLE.menu.current.id,
+				//createtime : GLOBLE.currentData.createtime,
+				url : GLOBLE.currentData.url
+			};
+			logAll(data);
+			$.post("/note_web/note/saveNote.action", data, function(data) {
+				GLOBLE.currentData = data;
+				$(".menuItemSelected").click();
+			}).error(function() {
+				alert("error");
 			});
+		});
 
-		})
+		$(".btn-delete").click(function() {
+			$.post("/note_web/note/delNoteById.action", {
+				id : GLOBLE.currentData.id
+			}, function(data) {
+				$(".menuItemSelected").click();
+			}).error(function() {
+				alert("删除失败");
+			});
+		});
 
 		$(".btn-alter").click(function() {
 			$(".btn-save,.btn-alter,.article-content-innerhtml").toggle();
@@ -239,29 +241,6 @@
 			ue.setContent($(".article-content-innerhtml").html());
 			ue.setShow();
 		});
-
-		$(".btn-delete")
-				.click(
-						function() {
-							//console.log("哎呀！出错了，待我去禀报小主才能删除，客官稍候...");
-							// tets
-							$
-									.ajax({
-										url : "/note_web/note/delNoteById.action",
-										type : "post",
-										data : {
-											id : GLOBLE.currentData.id
-										},
-										dataType : "text",//返回值类型
-										contentType : "application/x-www-form-urlencoded; charset=UTF-8",
-										success : function(data) {
-											reloadList();
-										},
-										error : function() {
-											alert("删除失败");
-										}
-									});
-						});
 
 		$("#theme-img").click(function() {
 			$("#theme").attr("href", "css/theme_new.css");
@@ -375,17 +354,25 @@
 		$(obj).addClass("menuItemSelected");
 	}
 	//点击菜单的操作
-	function menu_click(obj) {
+	function menu_click(obj, event) {
+		$(obj).find(".submenu").toggle();
+		loadMenu($(obj).find(".submenu"), $(obj).attr("data-menu-id"));
 		menu_click_UI_action(obj);
 		menu_click_data_action({
 			id : $(obj).attr('data-menu-id')
 		});
+		//中断事件冒泡
+		event.stopPropagation();
 	}
 
-	function init_menu(data) {
+	function init_menu(target, data) {
+		if (data.length == 0)
+			return;
+		target.removeClass("hide");
+		//alert(target);
 		var mItems = "";
 		for ( var i in data) {
-			mItems += "<li class='menuItem' onClick='menu_click(this)' data-menu-id="
+			mItems += "<li class='menuItem' onClick='menu_click(this,window.event)' data-menu-id="
 					+ data[i].id
 					+ ">"
 					+ "<div class='m-item-icon'>"
@@ -395,32 +382,21 @@
 					+ "'/></div>"
 					+ "<div class='m-item-desc'>"
 					+ data[i].description
-					+ "</div>" + "</li>";
+					+ "</div><div class='submenu hide'></div>" + "</li>";
 		}
-		$(".menuItems>ul").append(mItems);
+		target.html("<ul>" + mItems + "</ul>");
 	}
 
-	function init_loadData() {
+	function loadMenu(target, parentid) {
 		$.ajax({
 			type : "POST",
-			url : "/note_web/menu/selectAll.action",
+			url : "/note_web/menu/selectByParentId.action",
 			dataType : "json",
+			data : {
+				id : parentid
+			},
 			success : function(data) {
-				init_menu(data);
-				/*  //这里暂时不作处理  看需做什么
-				$.ajax({
-					type : "POST",
-					url : "/note_web/note/selectAll.action",
-					dataType : "json",
-					success : function(data) {
-						//logAll(data);
-						return true;
-					},
-					error : function() {
-						return false;
-						alert("未能加载笔记列表，请联系管理员。");
-					}
-				}); */
+				init_menu(target, data);
 			},
 			error : function() {
 				alert("菜单加载失败,请联系管理员。");

@@ -2,7 +2,7 @@ package com.civet.common.menu.service;
 
 import java.util.List;
 
-import com.civet.common.menu.entity.Menu;
+import com.civet.common.menu.entity.TMenu;
 
 /**
  * @author ChengJun
@@ -10,5 +10,10 @@ import com.civet.common.menu.entity.Menu;
  *
  */
 public interface MenuService {
-	List<Menu> selectAll();
+	List<TMenu> selectAll();
+
+	/**
+	 * @return
+	 */
+	List<TMenu> selectByParentId(String id);
 }

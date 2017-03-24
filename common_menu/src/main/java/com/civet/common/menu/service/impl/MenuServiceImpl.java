@@ -6,8 +6,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.civet.common.menu.dao.custom.MenuMapperCustom;
-import com.civet.common.menu.entity.Menu;
+import com.civet.common.menu.dao.custom.TMenuMapperCustom;
+import com.civet.common.menu.entity.TMenu;
 import com.civet.common.menu.service.MenuService;
 
 /** 
@@ -19,11 +19,19 @@ import com.civet.common.menu.service.MenuService;
 public class MenuServiceImpl implements MenuService{
 
 	@Resource
-	private MenuMapperCustom dao;
+	private TMenuMapperCustom dao;
 	
 	@Override
-	public List<Menu> selectAll() {
+	public List<TMenu> selectAll() {
 		return dao.selectAll();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.civet.common.menu.service.MenuService#selectByParentId()
+	 */
+	@Override
+	public List<TMenu> selectByParentId(String id) {
+		return dao.selectByParentId(id);
 	}
 
 }
